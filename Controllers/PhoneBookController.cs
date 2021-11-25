@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using HomeWork_22.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeWork_22.Controllers
 {
@@ -18,6 +19,7 @@ namespace HomeWork_22.Controllers
             repository = repo;
         }
 
+        //[Authorize]
         public IActionResult Index()
         {
             return View(repository.PhoneBooks);

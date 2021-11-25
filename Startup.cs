@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using HomeWork_22.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using HomeWork_22.Infrastructure;
 
 namespace HomeWork_22
 {
@@ -25,9 +27,28 @@ namespace HomeWork_22
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IPasswordValidator<AppUser>,
+                CustomPasswordValidator>();
+            services.AddTransient<IUserValidator<AppUser>,
+                CustomUserValidator>();
             services.AddDbContext<ApplicationDBContext>(options =>
                options.UseSqlServer(
                    Configuration["Data:HomeWork_22:ConnectionString"]));
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration["Data:HomeWork_22_Identity:ConnectionString"]));
+
+            services.AddIdentity<AppUser, IdentityRole>(opts => {
+                opts.User.RequireUniqueEmail = true;
+                //opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+                opts.Password.RequiredLength = 6;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
+                }).AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddTransient<IPhoneBookRepository, EFPhoneBookRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddMvc();
@@ -39,6 +60,7 @@ namespace HomeWork_22
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseAuthentication();
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute(
@@ -53,6 +75,7 @@ namespace HomeWork_22
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
             SeedData.EnsurePopulated(app);
+            //IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
