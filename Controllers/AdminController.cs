@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeWork_22.Controllers
 {
+    [Authorize(Roles = "Admins")]
     public class AdminController : Controller
     {
         private UserManager<AppUser> userManager;

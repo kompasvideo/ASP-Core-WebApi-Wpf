@@ -75,6 +75,8 @@ namespace HomeWork_22
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
             SeedData.EnsurePopulated(app);
+            AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices,
+        Configuration).Wait();
             //IdentitySeedData.EnsurePopulated(app);
         }
     }

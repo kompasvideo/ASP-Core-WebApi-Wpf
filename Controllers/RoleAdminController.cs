@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HomeWork_22.Controllers {
 
-    //[Authorize(Roles = "Admins")]
+    [Authorize(Roles = "Admins")]
     public class RoleAdminController : Controller {
         private RoleManager<IdentityRole> roleManager;
         private UserManager<AppUser> userManager;
