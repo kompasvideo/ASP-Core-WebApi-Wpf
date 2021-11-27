@@ -7,11 +7,18 @@ namespace HomeWork_22.Controllers
     public class UsersController : Controller
     {
         [Authorize]
-        public IActionResult Index() => View(GetData(nameof(Index)));
+        public IActionResult Index()
+        {
+            ViewBag.Name = HttpContext.User.Identity.Name;
+            return View(GetData(nameof(Index)));
+        }
 
         [Authorize(Roles = "Users")]
-        public IActionResult OtherAction() => View("Index",
-            GetData(nameof(OtherAction)));
+        public IActionResult OtherAction()
+        {
+            ViewBag.Name = HttpContext.User.Identity.Name;
+            return View("Index", GetData(nameof(OtherAction)));
+        }
 
         private Dictionary<string, object> GetData(string actionName) =>
             new Dictionary<string, object>

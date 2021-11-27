@@ -11,34 +11,15 @@
     <div class="container">
         <div class="row g-0">        
             <div class="col-9 text-center alert-secondary">
-                <h2 class="">
+                <h2>
                     Записная книжка
                 </h2>
             </div>
             <div class="col-2 text-center alert-secondary">
- @if ((bool)User?.Identity?.IsAuthenticated == true)
-                    {
-                        <div>Пользователь:</div>
-                        <div>@ViewBag.Name</div>
-                    }
-                    else
-                    {
-                        <h2>&nbsp;</h2>
-                    }
+                 <h2>&nbsp;</h2>
             </div>
             <div class="col-1 alert-secondary">
-                <div class="">
- @if ((bool)User?.Identity?.IsAuthenticated == false)
- {
-                    <a asp-controller="Account" asp-action="Login"
-       class="btn btn-primary">Войти</a>
- }
- else
- {
-                    <a asp-controller="Account" asp-action="Logout"
-       class="btn btn-primary">Выйти</a>
- }
-                </div>
+                 <h2>&nbsp;</h2>
             </div>
         </div>
         @RenderBody()

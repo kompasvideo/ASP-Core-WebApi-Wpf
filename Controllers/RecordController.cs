@@ -16,11 +16,13 @@ namespace HomeWork_22.Controllers
         }
         public ViewResult Index(PhoneBook phoneBook)
         {
-           return View(phoneBook);
+            ViewBag.Name = HttpContext.User.Identity.Name;
+            return View(phoneBook);
         }
 
         public RedirectToActionResult ViewRecord(int id)
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             PhoneBook phoneBook = repository.PhoneBooks
                 .FirstOrDefault(p => p.PhoneBookID == id);
             return RedirectToAction("Index", phoneBook);
@@ -28,10 +30,12 @@ namespace HomeWork_22.Controllers
 
         public ViewResult ViewAddRecord()
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             return View();
         }
         public ViewResult ViewEditRecord(int id)
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             PhoneBook phoneBook = repository.PhoneBooks
                 .FirstOrDefault(p => p.PhoneBookID == id);
             return View(phoneBook);
