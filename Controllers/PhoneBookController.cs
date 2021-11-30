@@ -22,16 +22,25 @@ namespace HomeWork_22.Controllers
         
         public IActionResult Index()
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
+            ViewData["ReturnUrl"] = "/PhoneBook/Index";
             return View(repository.PhoneBooks);
+        }
+
+        public RedirectToActionResult DeleteRecord()
+        {
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admins")]
         [HttpPost]
         public RedirectToActionResult DeleteRecord(int id)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             repository.DeleteRecord(id);
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult AddRecord()
+        {
             return RedirectToAction("Index");
         }
 
@@ -40,7 +49,6 @@ namespace HomeWork_22.Controllers
         public RedirectToActionResult AddRecord(string LastName, string FirstName, string ThreeName, string NumberPhone,
             string Address, string Description)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             PhoneBook phoneBook = new PhoneBook();
             phoneBook.FirstName = FirstName;
             phoneBook.LastName = LastName;
@@ -52,12 +60,16 @@ namespace HomeWork_22.Controllers
             return RedirectToAction("Index");
         }
 
+        public RedirectToActionResult EditRecord()
+        {
+            return RedirectToAction("Index");
+        }
+
         [Authorize(Roles = "Admins")]
         [HttpPost]
         public RedirectToActionResult EditRecord(int id, string LastName, string FirstName, string ThreeName, string NumberPhone,
             string Address, string Description)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             PhoneBook phoneBook = new PhoneBook();
             phoneBook.PhoneBookID = id;
             phoneBook.FirstName = FirstName;

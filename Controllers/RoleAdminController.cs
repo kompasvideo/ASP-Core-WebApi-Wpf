@@ -21,20 +21,17 @@ namespace HomeWork_22.Controllers {
 
         public ViewResult Index()
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             return View(roleManager.Roles);
         }
 
         public IActionResult Create()
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([Required]string name) 
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             if (ModelState.IsValid) {
                 IdentityResult result
                     = await roleManager.CreateAsync(new IdentityRole(name));
@@ -50,7 +47,6 @@ namespace HomeWork_22.Controllers {
         [HttpPost]
         public async Task<IActionResult> Delete(string id) 
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             IdentityRole role = await roleManager.FindByIdAsync(id);
             if (role != null) {
                 IdentityResult result = await roleManager.DeleteAsync(role);
@@ -67,7 +63,6 @@ namespace HomeWork_22.Controllers {
 
         public async Task<IActionResult> Edit(string id) 
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             IdentityRole role = await roleManager.FindByIdAsync(id);
             List<AppUser> members = new List<AppUser>();
             List<AppUser> nonMembers = new List<AppUser>();
@@ -86,7 +81,6 @@ namespace HomeWork_22.Controllers {
         [HttpPost]
         public async Task<IActionResult> Edit(RoleModificationModel model) 
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             IdentityResult result;
             if (ModelState.IsValid) {
                 foreach (string userId in model.IdsToAdd ?? new string[] { }) {
@@ -120,7 +114,6 @@ namespace HomeWork_22.Controllers {
 
         private void AddErrorsFromResult(IdentityResult result) 
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             foreach (IdentityError error in result.Errors) {
                 ModelState.AddModelError("", error.Description);
             }

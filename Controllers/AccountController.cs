@@ -21,7 +21,10 @@ namespace HomeWork_22.Controllers {
         [AllowAnonymous]
         public IActionResult Login(string returnUrl)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
+            if (returnUrl == null)
+            {
+                returnUrl = Url.Action("Index", "PhoneBook");
+            }
             ViewBag.returnUrl = returnUrl;
             return View();
         }
@@ -32,7 +35,6 @@ namespace HomeWork_22.Controllers {
         public async Task<IActionResult> Login(LoginModel details,
                 string returnUrl)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             if (ModelState.IsValid)
             {
                 AppUser user = await userManager.FindByEmailAsync(details.Email);
@@ -63,7 +65,6 @@ namespace HomeWork_22.Controllers {
         [AllowAnonymous]
         public IActionResult AccessDenied()
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             return View();
         }
     }

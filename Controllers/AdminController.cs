@@ -27,19 +27,16 @@ namespace HomeWork_22.Controllers
 
         public ViewResult Index()
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             return View(userManager.Users);
         }
         public ViewResult Create()
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateModel model)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             if (ModelState.IsValid)
             {
                 AppUser user = new AppUser
@@ -68,7 +65,6 @@ namespace HomeWork_22.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
@@ -91,7 +87,6 @@ namespace HomeWork_22.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
@@ -107,7 +102,6 @@ namespace HomeWork_22.Controllers
         public async Task<IActionResult> Edit(string id, string email,
                 string password)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
@@ -157,7 +151,6 @@ namespace HomeWork_22.Controllers
 
         private void AddErrorsFromResult(IdentityResult result)
         {
-            ViewBag.Name = HttpContext.User.Identity.Name;
             foreach (IdentityError error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
