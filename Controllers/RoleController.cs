@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Authorization;
 namespace HomeWork_22.Controllers {
 
     [Authorize(Roles = "Admins")]
-    public class RoleAdminController : Controller {
+    public class RoleController : Controller {
         private RoleManager<IdentityRole> roleManager;
         private UserManager<AppUser> userManager;
 
-        public RoleAdminController(RoleManager<IdentityRole> roleMgr,
+        public RoleController(RoleManager<IdentityRole> roleMgr,
                                    UserManager<AppUser> userMrg) {
             roleManager = roleMgr;
             userManager = userMrg;

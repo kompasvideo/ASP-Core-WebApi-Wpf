@@ -99,37 +99,39 @@ namespace HomeWork_22.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, string email,
-                string password)
+        public async Task<IActionResult> Edit(string Id, string Email,
+                string UserName)
         {
-            AppUser user = await userManager.FindByIdAsync(id);
+            AppUser user = await userManager.FindByIdAsync(Id);
             if (user != null)
             {
-                user.Email = email;
-                IdentityResult validEmail
+                user.Email = Email;
+                user.UserName = UserName;
+                IdentityResult validUserName
                     = await userValidator.ValidateAsync(userManager, user);
-                if (!validEmail.Succeeded)
+                if (!validUserName.Succeeded)
                 {
-                    AddErrorsFromResult(validEmail);
+                    AddErrorsFromResult(validUserName);
                 }
-                IdentityResult validPass = null;
-                if (!string.IsNullOrEmpty(password))
-                {
-                    validPass = await passwordValidator.ValidateAsync(userManager,
-                        user, password);
-                    if (validPass.Succeeded)
-                    {
-                        user.PasswordHash = passwordHasher.HashPassword(user,
-                            password);
-                    }
-                    else
-                    {
-                        AddErrorsFromResult(validPass);
-                    }
-                }
-                if ((validEmail.Succeeded && validPass == null)
-                        || (validEmail.Succeeded
-                        && password != string.Empty && validPass.Succeeded))
+                //IdentityResult validPass = null;
+                //if (!string.IsNullOrEmpty(UserName))
+                //{
+                //    validPass = await passwordValidator.ValidateAsync(userManager,
+                //        user, UserName);
+                //    if (validPass.Succeeded)
+                //    {
+                //        user.PasswordHash = passwordHasher.HashPassword(user,
+                //            UserName);
+                //    }
+                //    else
+                //    {
+                //        AddErrorsFromResult(validPass);
+                //    }
+                //}
+                //if ((validUserName.Succeeded && validPass == null)
+                //        || (validUserName.Succeeded
+                //        && UserName != string.Empty && validPass.Succeeded))
+                if (validUserName.Succeeded && UserName != string.Empty)
                 {
                     IdentityResult result = await userManager.UpdateAsync(user);
                     if (result.Succeeded)
