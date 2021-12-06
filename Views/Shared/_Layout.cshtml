@@ -19,7 +19,7 @@
  @if ((bool)User?.Identity?.IsAuthenticated == true)
                     {
                         <div>Пользователь:</div>
-                        <div>@User.Identity.Name</div>
+                        <div>@ViewBag.Name</div>
                     }
                     else
                     {
@@ -30,7 +30,7 @@
                 <div class="">
  @if ((bool)User?.Identity?.IsAuthenticated == false)
  {
-                    <a asp-controller="Account" asp-action="Login" asp-route-ReturnUrl=@ViewData["ReturnUrl"]
+                    <a asp-controller="Account" asp-action="Login"
        class="btn btn-primary">Войти</a>
  }
  else

@@ -9,12 +9,14 @@ namespace HomeWork_22.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             return View(GetData(nameof(Index)));
         }
 
         [Authorize(Roles = "Users")]
         public IActionResult OtherAction()
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             return View("Index", GetData(nameof(OtherAction)));
         }
 

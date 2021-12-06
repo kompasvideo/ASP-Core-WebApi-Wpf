@@ -27,16 +27,19 @@ namespace HomeWork_22.Controllers
 
         public ViewResult Index()
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             return View(userManager.Users);
         }
         public ViewResult Create()
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateModel model)
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             if (ModelState.IsValid)
             {
                 AppUser user = new AppUser
@@ -65,6 +68,7 @@ namespace HomeWork_22.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
@@ -87,6 +91,7 @@ namespace HomeWork_22.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
@@ -99,39 +104,38 @@ namespace HomeWork_22.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(string Id, string Email,
-                string UserName)
+        public async Task<IActionResult> Edit(string id, string email,
+                string password)
         {
-            AppUser user = await userManager.FindByIdAsync(Id);
+            ViewBag.Name = HttpContext.User.Identity.Name;
+            AppUser user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
-                user.Email = Email;
-                user.UserName = UserName;
-                IdentityResult validUserName
+                user.Email = email;
+                IdentityResult validEmail
                     = await userValidator.ValidateAsync(userManager, user);
-                if (!validUserName.Succeeded)
+                if (!validEmail.Succeeded)
                 {
-                    AddErrorsFromResult(validUserName);
+                    AddErrorsFromResult(validEmail);
                 }
-                //IdentityResult validPass = null;
-                //if (!string.IsNullOrEmpty(UserName))
-                //{
-                //    validPass = await passwordValidator.ValidateAsync(userManager,
-                //        user, UserName);
-                //    if (validPass.Succeeded)
-                //    {
-                //        user.PasswordHash = passwordHasher.HashPassword(user,
-                //            UserName);
-                //    }
-                //    else
-                //    {
-                //        AddErrorsFromResult(validPass);
-                //    }
-                //}
-                //if ((validUserName.Succeeded && validPass == null)
-                //        || (validUserName.Succeeded
-                //        && UserName != string.Empty && validPass.Succeeded))
-                if (validUserName.Succeeded && UserName != string.Empty)
+                IdentityResult validPass = null;
+                if (!string.IsNullOrEmpty(password))
+                {
+                    validPass = await passwordValidator.ValidateAsync(userManager,
+                        user, password);
+                    if (validPass.Succeeded)
+                    {
+                        user.PasswordHash = passwordHasher.HashPassword(user,
+                            password);
+                    }
+                    else
+                    {
+                        AddErrorsFromResult(validPass);
+                    }
+                }
+                if ((validEmail.Succeeded && validPass == null)
+                        || (validEmail.Succeeded
+                        && password != string.Empty && validPass.Succeeded))
                 {
                     IdentityResult result = await userManager.UpdateAsync(user);
                     if (result.Succeeded)
@@ -153,6 +157,7 @@ namespace HomeWork_22.Controllers
 
         private void AddErrorsFromResult(IdentityResult result)
         {
+            ViewBag.Name = HttpContext.User.Identity.Name;
             foreach (IdentityError error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);

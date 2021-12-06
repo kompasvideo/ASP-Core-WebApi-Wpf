@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_1", "HomeWork_22_1.csproj", "{289AAB87-4541-4449-8B00-D39D795AB354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22", "HomeWork_22.csproj", "{80DD8888-50DD-4F32-B33F-F69D823547D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_2_WebApi", "..\HomeWork_22_2_WebApi\HomeWork_22_2_WebApi.csproj", "{46533813-7833-470F-A9A8-A4E42CC8921B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_2_WebApi", "..\HomeWork_22_2_WebApi\HomeWork_22_2_WebApi.csproj", "{020BADFB-24DF-4901-B7B6-15F524202E1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_2_WebClient", "..\HomeWork_22_2_WebClient\HomeWork_22_2_WebClient.csproj", "{D0703AC0-8EBB-4DC1-A2CB-70C08E530AB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_2_WebClient", "..\HomeWork_22_2_WebClient\HomeWork_22_2_WebClient.csproj", "{57CFD522-FC30-46C3-856D-4CCB60AC687F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{289AAB87-4541-4449-8B00-D39D795AB354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{289AAB87-4541-4449-8B00-D39D795AB354}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{289AAB87-4541-4449-8B00-D39D795AB354}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{289AAB87-4541-4449-8B00-D39D795AB354}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46533813-7833-470F-A9A8-A4E42CC8921B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46533813-7833-470F-A9A8-A4E42CC8921B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46533813-7833-470F-A9A8-A4E42CC8921B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46533813-7833-470F-A9A8-A4E42CC8921B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0703AC0-8EBB-4DC1-A2CB-70C08E530AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0703AC0-8EBB-4DC1-A2CB-70C08E530AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0703AC0-8EBB-4DC1-A2CB-70C08E530AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0703AC0-8EBB-4DC1-A2CB-70C08E530AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DD8888-50DD-4F32-B33F-F69D823547D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DD8888-50DD-4F32-B33F-F69D823547D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DD8888-50DD-4F32-B33F-F69D823547D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DD8888-50DD-4F32-B33F-F69D823547D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{020BADFB-24DF-4901-B7B6-15F524202E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{020BADFB-24DF-4901-B7B6-15F524202E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{020BADFB-24DF-4901-B7B6-15F524202E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{020BADFB-24DF-4901-B7B6-15F524202E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57CFD522-FC30-46C3-856D-4CCB60AC687F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57CFD522-FC30-46C3-856D-4CCB60AC687F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57CFD522-FC30-46C3-856D-4CCB60AC687F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57CFD522-FC30-46C3-856D-4CCB60AC687F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
