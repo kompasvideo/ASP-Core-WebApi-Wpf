@@ -7,7 +7,8 @@ namespace HomeWork_22_2_WebClient.Interfaces
         IEnumerable<PhoneBook> phoneBooks { get; set; }
         IEnumerable<PhoneBook> GetPhoneBook();
         PhoneBook GetPhoneBookId( int id);
-        void AddAndEditRecord(PhoneBook phoneBook);
-        void DeleteRecord(int id);
+        Task AddRecord(PhoneBook phoneBook, IAppUser appUser);
+        Task EditRecord(PhoneBook phoneBook, IAppUser appUser);
+        Task DeleteRecord(int id, IAppUser appUser);
     }
 }

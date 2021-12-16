@@ -26,7 +26,7 @@ namespace HomeWork_22_2_WebClient.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddRecord(string LastName, string FirstName, string ThreeName, string NumberPhone,
+        public async Task<RedirectToActionResult> AddRecord(string LastName, string FirstName, string ThreeName, string NumberPhone,
             string Address, string Description)
         {
             PhoneBook phoneBookL = new PhoneBook();
@@ -36,7 +36,7 @@ namespace HomeWork_22_2_WebClient.Controllers
             phoneBookL.NumberPhone = NumberPhone;
             phoneBookL.Address = Address;
             phoneBookL.Description = Description;
-            phoneBook.AddAndEditRecord(phoneBookL);
+            await phoneBook.AddRecord(phoneBookL, appUser);
             return RedirectToAction("Index");
         }
 
@@ -46,9 +46,9 @@ namespace HomeWork_22_2_WebClient.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteRecord(int id)
+        public async Task<RedirectToActionResult> DeleteRecord(int id)
         {
-            phoneBook.DeleteRecord(id);
+            await phoneBook.DeleteRecord(id, appUser);
             return RedirectToAction("Index");
         }
 
@@ -58,7 +58,7 @@ namespace HomeWork_22_2_WebClient.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult EditRecord(int id, string LastName, string FirstName, string ThreeName, string NumberPhone,
+        public async Task<RedirectToActionResult> EditRecord(int id, string LastName, string FirstName, string ThreeName, string NumberPhone,
             string Address, string Description)
         {
             PhoneBook phoneBookL = new PhoneBook();
@@ -69,7 +69,7 @@ namespace HomeWork_22_2_WebClient.Controllers
             phoneBookL.NumberPhone = NumberPhone;
             phoneBookL.Address = Address;
             phoneBookL.Description = Description;
-            phoneBook.AddAndEditRecord(phoneBookL);
+            await phoneBook.EditRecord(phoneBookL, appUser);
             return RedirectToAction("Index");
         }
     }
