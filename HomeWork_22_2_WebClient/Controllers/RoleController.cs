@@ -101,7 +101,7 @@ namespace HomeWork_22_2_WebClient.Controllers
             }
             return RedirectToAction(nameof(Error));
         }
-
+        [HttpGet]
         public IActionResult Create()
         {
             ViewData["logIn"] = appUser.logIn;

@@ -21,9 +21,8 @@ namespace HomeWork_22_2_WebClient.Data
                 HttpRequestMessage request = new HttpRequestMessage();
                 request.RequestUri = new Uri("https://localhost:5001/Role");
                 request.Method = HttpMethod.Post;
-                //request.Content = new StringContent(JsonConvert.SerializeObject(""), Encoding.UTF8);
-                request.Headers.Clear();
-                request.Headers.Add("traceparent", appUser.GetToken());
+                request.Content = new StringContent(JsonConvert.SerializeObject("1"), Encoding.UTF8, mediaType: "application/json");
+                request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
                 var l_httpResponseMessage = await httpClient.SendAsync(request);
                 if (l_httpResponseMessage.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -43,8 +42,7 @@ namespace HomeWork_22_2_WebClient.Data
                 request.RequestUri = new Uri("https://localhost:5001/GetRole");
                 request.Method = HttpMethod.Post;
                 request.Content = new StringContent(JsonConvert.SerializeObject(Role), Encoding.UTF8, mediaType: "application/json");
-                request.Headers.Clear();
-                request.Headers.Add("traceparent", appUser.GetToken());
+                request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
                 var l_httpResponseMessage = await httpClient.SendAsync(request);
                 if (l_httpResponseMessage.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -61,9 +59,8 @@ namespace HomeWork_22_2_WebClient.Data
             HttpRequestMessage request = new HttpRequestMessage();
             request.RequestUri = new Uri("https://localhost:5001/GetEditRole");
             request.Method = HttpMethod.Post;
-            request.Headers.Clear();
             request.Content = new StringContent(JsonConvert.SerializeObject(id), Encoding.UTF8, mediaType: "application/json");
-            request.Headers.Add("traceparent", appUser.GetToken());
+            request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
             var l_httpResponseMessage = await httpClient.SendAsync(request);
             if (l_httpResponseMessage.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -83,9 +80,8 @@ namespace HomeWork_22_2_WebClient.Data
             HttpRequestMessage request = new HttpRequestMessage();
             request.RequestUri = new Uri("https://localhost:5001/SetEditRole");
             request.Method = HttpMethod.Post;
-            request.Headers.Clear();
             request.Content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, mediaType: "application/json");
-            request.Headers.Add("traceparent", appUser.GetToken());
+            request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
             var l_httpResponseMessage = await httpClient.SendAsync(request);
             if (l_httpResponseMessage.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -105,9 +101,8 @@ namespace HomeWork_22_2_WebClient.Data
             HttpRequestMessage request = new HttpRequestMessage();
             request.RequestUri = new Uri("https://localhost:5001/DeleteRole");
             request.Method = HttpMethod.Post;
-            request.Headers.Clear();
             request.Content = new StringContent(JsonConvert.SerializeObject(id), Encoding.UTF8, mediaType: "application/json");
-            request.Headers.Add("traceparent", appUser.GetToken());
+            request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
             var l_httpResponseMessage = await httpClient.SendAsync(request);
             if (l_httpResponseMessage.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -127,9 +122,8 @@ namespace HomeWork_22_2_WebClient.Data
             HttpRequestMessage request = new HttpRequestMessage();
             request.RequestUri = new Uri("https://localhost:5001/CreateRole");
             request.Method = HttpMethod.Post;
-            request.Headers.Clear();
             request.Content = new StringContent(JsonConvert.SerializeObject(name), Encoding.UTF8, mediaType: "application/json");
-            request.Headers.Add("traceparent", appUser.GetToken());
+            request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
             var l_httpResponseMessage = await httpClient.SendAsync(request);
             if (l_httpResponseMessage.StatusCode == System.Net.HttpStatusCode.OK)
             {
