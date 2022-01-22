@@ -35,26 +35,34 @@ namespace HomeWork_22_2_WebClient.Data
             return phoneBooksRecord;
         }
 
-        public void AddAndEditRecord(PhoneBook phoneBook)
+        public async Task AddRecord(PhoneBook phoneBook, IAppUser appUser)
         {
-            string url = @"https://localhost:5001/PhoneBook";
-
-            var r = httpClient.PostAsync(
-                requestUri: url,
-                content: new StringContent(JsonConvert.SerializeObject(phoneBook), Encoding.UTF8,
-                mediaType: "application/json")
-                ).Result;
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.RequestUri = new Uri("https://localhost:5001/PhoneBook/Add");
+            request.Method = HttpMethod.Post;
+            request.Content = new StringContent(JsonConvert.SerializeObject(phoneBook), Encoding.UTF8, mediaType: "application/json");
+            request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
+            await httpClient.SendAsync(request);
         }
 
-        public void DeleteRecord(int id)
+        public async Task EditRecord(PhoneBook phoneBook, IAppUser appUser)
         {
-            string url = @"https://localhost:5001/PhoneBook/" + id.ToString();
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.RequestUri = new Uri("https://localhost:5001/PhoneBook");
+            request.Method = HttpMethod.Post;
+            request.Content = new StringContent(JsonConvert.SerializeObject(phoneBook), Encoding.UTF8, mediaType: "application/json");
+            request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
+            await httpClient.SendAsync(request);
+        }
 
-            var r = httpClient.PostAsync(
-                requestUri: url,
-                content: new StringContent(id.ToString(), Encoding.UTF8,
-                mediaType: "application/json")
-                ).Result;
+        public async Task DeleteRecord(int id, IAppUser appUser)
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.RequestUri = new Uri("https://localhost:5001/PhoneBook/" + id.ToString());
+            request.Method = HttpMethod.Post;
+            request.Content = new StringContent(id.ToString(), Encoding.UTF8, mediaType: "application/json");
+            request.Headers.Add("Authorization", "Bearer " + appUser.GetToken());
+            await httpClient.SendAsync(request);
         }
     }
 }

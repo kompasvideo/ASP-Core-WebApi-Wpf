@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HomeWork_22_2_WPFClient.ViewModel
@@ -17,6 +18,7 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         private static PageService pageService;
         private static MessageBus messageBus;
         public static PhoneBook PhoneBook1 { get; set; }
+        private static Page page;
         public PageViewRecordViewModel(PageService p_pageService, MessageBus p_messageBus)
         {
             pageService = p_pageService;
@@ -24,6 +26,7 @@ namespace HomeWork_22_2_WPFClient.ViewModel
             if (messageBus != null)
             {
                 messageBus.Receive<PhoneBookMessages>(this, async message => { PhoneBook1 = message.phoneBook; });
+                messageBus.Receive<ReturnPageMessage>(this, async message => { page = message.ReturnPage; });
             }
         }
         public PageViewRecordViewModel()
@@ -33,7 +36,7 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         {
             get
             {
-                return new DelegateCommand((obj) => { pageService.ChangePage(new Page1()); });
+                return new DelegateCommand((obj) => { pageService.ChangePage(page); });
             }
         }
 
@@ -41,7 +44,11 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         {
             get
             {
-                return new DelegateCommand((obj) => { pageService.ChangePage(new PageLogin()); });
+                return new DelegateCommand(async (obj) => 
+                {
+                    await messageBus.SendTo<PageLoginViewModel>(new ReturnPageMessage(page));
+                    pageService.ChangePage(new PageLogin()); 
+                });
             }
         }
     }

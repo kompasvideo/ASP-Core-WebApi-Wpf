@@ -17,9 +17,17 @@ namespace HomeWork_22_2_WPFClient
 
             services.AddTransient<MainViewModel>();
             services.AddTransient<Page1ViewModel>();
+            services.AddTransient<Page1AndLoginUserViewModel>();
             services.AddTransient<PageViewRecordViewModel>();
+            services.AddTransient<PageAddRecordViewModel>();
+            services.AddTransient<PageEditRecordViewModel>();
             services.AddTransient<PageLoginViewModel>();
             services.AddTransient<PageErrorViewModel>();
+            services.AddTransient<PageNotAccessViewModel>();
+            services.AddTransient<PageAdminViewModel>();
+            services.AddTransient<PageAddUserViewModel>();
+            services.AddTransient<PageEditUserViewModel>();
+            services.AddTransient<PageRolesViewModel>();
 
             services.AddSingleton<PageService>();
             services.AddSingleton<EventBus>();
@@ -41,8 +49,16 @@ namespace HomeWork_22_2_WPFClient
         public MainViewModel mainViewModel => _provider.GetRequiredService<MainViewModel>();
         //public LogPageViewModel LogPageViewModel => _provider.GetRequiredService<LogPageViewModel>();
         public Page1ViewModel page1 => _provider.GetRequiredService<Page1ViewModel>();
+        public Page1AndLoginUserViewModel page1AndLoginUser => _provider.GetRequiredService<Page1AndLoginUserViewModel>();
         public PageViewRecordViewModel pageViewRecord => _provider.GetRequiredService<PageViewRecordViewModel>();
+        public PageAddRecordViewModel pageAddRecord => _provider.GetRequiredService<PageAddRecordViewModel>();
+        public PageEditRecordViewModel pageEditRecord => _provider.GetRequiredService<PageEditRecordViewModel>();
         public PageLoginViewModel PageLogin => _provider.GetRequiredService<PageLoginViewModel>();
         public PageErrorViewModel pageError => _provider.GetRequiredService<PageErrorViewModel>();
+        public PageNotAccessViewModel pageNotAccess => _provider.GetRequiredService<PageNotAccessViewModel>();
+        public PageAdminViewModel pageAdmin => _provider.GetRequiredService<PageAdminViewModel>();
+        public PageAddUserViewModel pageAddUser => _provider.GetRequiredService<PageAddUserViewModel>();
+        public PageEditUserViewModel pageEditUser => _provider.GetRequiredService<PageEditUserViewModel>();
+        public PageRolesViewModel pageRoles => _provider.GetRequiredService<PageRolesViewModel>();
     }
 }

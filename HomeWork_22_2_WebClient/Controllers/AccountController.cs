@@ -8,7 +8,7 @@ namespace HomeWork_22_2_WebClient.Controllers {
 
     public class AccountController : Controller 
     {
-        private IAppUser appUser;
+        private readonly IAppUser appUser;
         public AccountController(IAppUser appUser)
         {
             this.appUser = appUser;

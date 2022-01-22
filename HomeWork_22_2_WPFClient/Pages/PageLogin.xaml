@@ -18,7 +18,7 @@
             <TextBox Text="{Binding LoginName,Source={StaticResource pageLogin}}" Width="200"/>
             <TextBlock Text="Пароль:"/>
             <TextBox Text="{Binding Password,Source={StaticResource pageLogin}}"  Width="200"/>
-            <Button Content="Войти" Command="{Binding ButtonLoginlClickCommand, Source={StaticResource pageLogin}}"/>
+            <Button Content="Войти" Command="{Binding ButtonLoginClickCommand, Source={StaticResource pageLogin}}"/>
         </StackPanel>
     </DockPanel>
 </Page>

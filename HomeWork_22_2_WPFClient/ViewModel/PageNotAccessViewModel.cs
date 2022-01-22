@@ -12,13 +12,12 @@ using System.Windows.Input;
 
 namespace HomeWork_22_2_WPFClient.ViewModel
 {
-    public class PageErrorViewModel : ViewModelBase
+    public class PageNotAccessViewModel : ViewModelBase
     {
         private static PageService pageService;
         private static MessageBus messageBus;
         private static Page page;
-
-        public PageErrorViewModel(PageService p_pageService, MessageBus p_messageBus)
+        public PageNotAccessViewModel(PageService p_pageService, MessageBus p_messageBus)
         {
             pageService = p_pageService;
             messageBus = p_messageBus;
@@ -27,7 +26,7 @@ namespace HomeWork_22_2_WPFClient.ViewModel
                 messageBus.Receive<ReturnPageMessage>(this, async message => { page = message.ReturnPage; });
             }
         }
-        public PageErrorViewModel()
+        public PageNotAccessViewModel()
         {
         }
 

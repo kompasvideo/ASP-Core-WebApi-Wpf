@@ -1,4 +1,4 @@
-﻿<Page x:Class="HomeWork_22_2_WPFClient.Pages.PageError"
+﻿<Page x:Class="HomeWork_22_2_WPFClient.Pages.PageNotAccess"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:HomeWork_22_2_WPFClient.Pages"
       mc:Ignorable="d" 
       xmlns:viewmodel="clr-namespace:HomeWork_22_2_WPFClient.ViewModel"
-      DataContext="{Binding pageError, Source={StaticResource ViewModelLocator}}"
+      DataContext="{Binding pageNotAccess, Source={StaticResource ViewModelLocator}}"
       Title="PageError">
-    
+
     <Page.Resources>
-        <viewmodel:PageErrorViewModel x:Key="pageError"/>
+        <viewmodel:PageNotAccessViewModel x:Key="pageNotAccess"/>
     </Page.Resources>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Ошибка"/>
-        <Button Content="Ok" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageError}}"/>
+        <TextBlock Text="Нет доступа"/>
+        <Button Content="Ok" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageNotAccess}}"/>
     </StackPanel>
 </Page>

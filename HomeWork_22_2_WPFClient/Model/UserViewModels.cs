@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HomeWork_22_2_WPFClient.Models {
 
-    public class CreateModel {
+    public class CreateModel
+    {
         [Required]
         public string Name { get; set; }
         [Required]
