@@ -28,6 +28,8 @@ namespace HomeWork_22_2_WPFClient
             services.AddTransient<PageAddUserViewModel>();
             services.AddTransient<PageEditUserViewModel>();
             services.AddTransient<PageRolesViewModel>();
+            services.AddTransient<PageAddRoleViewModel>();
+            services.AddTransient<PageEditRoleViewModel>();
 
             services.AddSingleton<PageService>();
             services.AddSingleton<EventBus>();
@@ -60,5 +62,7 @@ namespace HomeWork_22_2_WPFClient
         public PageAddUserViewModel pageAddUser => _provider.GetRequiredService<PageAddUserViewModel>();
         public PageEditUserViewModel pageEditUser => _provider.GetRequiredService<PageEditUserViewModel>();
         public PageRolesViewModel pageRoles => _provider.GetRequiredService<PageRolesViewModel>();
+        public PageAddRoleViewModel pageAddRole => _provider.GetRequiredService<PageAddRoleViewModel>();
+        public PageEditRoleViewModel pageEditRole => _provider.GetRequiredService<PageEditRoleViewModel>();
     }
 }

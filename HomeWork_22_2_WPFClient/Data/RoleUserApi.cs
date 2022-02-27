@@ -59,7 +59,7 @@ namespace HomeWork_22_2_WPFClient.Data
                 }
             }
             throw new Exception("Ошибка");
-        }
+        }        
 
         public async Task<RoleEditModel> GetEditRole(string id, IAppUser appUser)
         {

@@ -117,6 +117,9 @@ namespace HomeWork_22_2_WPFClient.ViewModel
                     {
                         pageService.ChangePage(new PageError());
                     }
+                    await appUser.LoadUsers();
+                    var res = appUser.GetUsers().ToList();
+                    await messageBus.SendTo<PageAdminViewModel>(new UsersMessage(res));
                     pageService.ChangePage(new PageAdmin());
                 });
                 return a;

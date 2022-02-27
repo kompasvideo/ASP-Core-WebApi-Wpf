@@ -129,7 +129,12 @@ namespace HomeWork_22_2_WPFClient.ViewModel
                 var a = new DelegateCommand(async () =>
                 {
                     await appUser.LoadUsers();
-                    var res = appUser.GetUsers().ToList();
+                    var users = appUser.GetUsers();
+                    List<AppUser> res = null;
+                    if (users != null)
+                    {
+                        res = users.ToList();
+                    }
                     await messageBus.SendTo<PageAdminViewModel>(new UsersMessage(res));
                     pageService.ChangePage(new PageAdmin());
                 });

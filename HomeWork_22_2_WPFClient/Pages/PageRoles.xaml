@@ -11,7 +11,7 @@
       >
 
     <Page.Resources>
-        <viewmodel:PageAdminViewModel x:Key="page"/>
+        <viewmodel:PageRolesViewModel x:Key="page"/>
     </Page.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Top">

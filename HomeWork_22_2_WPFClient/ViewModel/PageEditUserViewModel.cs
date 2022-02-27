@@ -36,6 +36,10 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         {
 
         }
+
+        /// <summary>
+        /// Нажата кнопка "Вернуться назад"
+        /// </summary>
         public ICommand ButtonReturnClickCommand
         {
             get

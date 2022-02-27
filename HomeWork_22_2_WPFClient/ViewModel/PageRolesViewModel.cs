@@ -24,9 +24,11 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         private static IAppUser appUser;
         private static IRoleUser roleUser;
 
-        public static List<IdentityRole> lIdentityRole;
+        public static IEnumerable<IdentityRole> lIdentityRole;
         public static ObservableCollection<MyIdentityRole> Roles { get; set; }
         public static string UserName { get; set; }
+        private static bool RunCtor { get; set; }
+        
 
         public PageRolesViewModel(PageService p_pageService, MessageBus p_messageBus,
             IAppUser p_appUser, IRoleUser p_roleUser)
@@ -38,20 +40,25 @@ namespace HomeWork_22_2_WPFClient.ViewModel
             if (messageBus != null)
             {
                 messageBus.Receive<RolesMessage>(this, async message => 
-                { 
-                    lIdentityRole = message.Roles; 
-                    if (lIdentityRole != null)
+                {
+                    if (!RunCtor)
                     {
-                        Roles = new ObservableCollection<MyIdentityRole>();
-                        foreach (var role in lIdentityRole)
+                        RunCtor = true;
+                        lIdentityRole = message.Roles;
+                        if (lIdentityRole != null)
                         {
-                            MyIdentityRole myIdentityRole = new MyIdentityRole(role.Id, role.Name);
-                            List<string> names = new List<string>();
+                            Roles = new ObservableCollection<MyIdentityRole>();
+                            foreach (var role in lIdentityRole)
+                            {
+                                MyIdentityRole myIdentityRole = new MyIdentityRole(role.Id, role.Name);
+                                List<string> names = new List<string>();
 
-                            names = await p_roleUser.FindByIdAsync(role.Id, appUser);
-                            myIdentityRole.Users = names.Count == 0 ? "No Users" : string.Join(", ", names);
-                            Roles.Add(myIdentityRole);
+                                names = await p_roleUser.FindByIdAsync(role.Id, appUser);
+                                myIdentityRole.Users = names.Count == 0 ? "No Users" : string.Join(", ", names);
+                                Roles.Add(myIdentityRole);
+                            }
                         }
+                        RunCtor = false;
                     }
                 });
             }
@@ -91,7 +98,7 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         {
             get
             {
-                return new DelegateCommand((obj) => { pageService.ChangePage(new PageAddUser()); });
+                return new DelegateCommand((obj) => { pageService.ChangePage(new PageAddRole()); });
             }
         }
 
@@ -122,13 +129,23 @@ namespace HomeWork_22_2_WPFClient.ViewModel
                     string id = obj.ToString();
                     try
                     {
-                        await appUser.DeleteUser(id);
+                        bool result = await roleUser.DeleteRole(id, appUser);
+                        if (result)
+                        {
+                            IEnumerable<IdentityRole> roles = null;
+                            roles = await roleUser.GetRoles(appUser);
+                            await messageBus.SendTo<PageRolesViewModel>(new RolesMessage(roles));
+                            pageService.ChangePage(new PageRoles());
+                        }
+                        else
+                        {
+                            pageService.ChangePage(new PageError());
+                        }
                     }
                     catch (Exception)
                     {
                         pageService.ChangePage(new PageError());
                     }
-                    pageService.ChangePage(new PageAdmin());
                 });
                 return a;
             }
@@ -144,11 +161,45 @@ namespace HomeWork_22_2_WPFClient.ViewModel
                 var a = new DelegateCommand(async (obj) =>
                 {
                     string id = obj.ToString();
-                    //var r = Users.Where(g => g.Id == id).FirstOrDefault();
-                    //await messageBus.SendTo<PageEditUserViewModel>(new AppUserMessage(r));
-                    pageService.ChangePage(new PageEditUser());
+                    MyIdentityRole r = Roles.Where(g => g.Id == id).FirstOrDefault();
+                    await AddUsersInRole(r);
+                    await messageBus.SendTo<PageEditRoleViewModel>(new AppRoleMessage(r));
+                    pageService.ChangePage(new PageEditRole());
                 });
                 return a;
+            }
+        }
+
+        async Task AddUsersInRole(MyIdentityRole r)
+        {
+            try
+            {
+                SortedSet<AppUser> usersAdd = new SortedSet<AppUser>();
+                SortedSet<AppUser> usersDel = new SortedSet<AppUser>();
+                List<string> names = await roleUser.FindByIdAsync(r.Id, appUser);
+                foreach (AppUser user in appUser.GetUsers().ToList())
+                {
+                    bool isContains = false;
+                    foreach (string name in names)
+                    {
+                        if (user.UserName == name)
+                            isContains = true;
+                    }
+                    if (!isContains)
+                    {
+                        usersAdd.Add(user);
+                    }
+                    else
+                    {
+                        usersDel.Add(user);
+                    }
+                }
+                r.UsersAdd = usersAdd.ToList();
+                r.UsersDel = usersDel.ToList();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

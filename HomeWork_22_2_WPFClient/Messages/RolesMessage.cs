@@ -9,10 +9,10 @@ namespace HomeWork_22_2_WPFClient.Messages
 {
     public class RolesMessage : IMessage
     {
-        public RolesMessage(List<IdentityRole> p_roles)
+        public RolesMessage(IEnumerable<IdentityRole> p_roles)
         {
             Roles = p_roles;
         }
-        public List<IdentityRole> Roles { get; set; }
+        public IEnumerable<IdentityRole> Roles { get; set; }
     }
 }
