@@ -49,7 +49,6 @@ namespace HomeWork_22_2_WPFClient
         }
 
         public MainViewModel mainViewModel => _provider.GetRequiredService<MainViewModel>();
-        //public LogPageViewModel LogPageViewModel => _provider.GetRequiredService<LogPageViewModel>();
         public Page1ViewModel page1 => _provider.GetRequiredService<Page1ViewModel>();
         public Page1AndLoginUserViewModel page1AndLoginUser => _provider.GetRequiredService<Page1AndLoginUserViewModel>();
         public PageViewRecordViewModel pageViewRecord => _provider.GetRequiredService<PageViewRecordViewModel>();

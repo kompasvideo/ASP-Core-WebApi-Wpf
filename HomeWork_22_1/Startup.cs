@@ -40,7 +40,6 @@ namespace HomeWork_22
 
             services.AddIdentity<AppUser, IdentityRole>(opts => {
                 opts.User.RequireUniqueEmail = true;
-                //opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
                 opts.Password.RequiredLength = 6;
                 opts.Password.RequireNonAlphanumeric = false;
                 opts.Password.RequireLowercase = false;
@@ -61,12 +60,6 @@ namespace HomeWork_22
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseAuthentication();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=PhoneBook}/{action=Index}/{id?}");
-            //});
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

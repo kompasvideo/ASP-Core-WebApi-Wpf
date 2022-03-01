@@ -22,8 +22,6 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         public static string Email { get; set; }
         public static string Password { get; set; }
 
-
-
         public PageAddUserViewModel(PageService p_pageService, MessageBus p_messageBus, IAppUser p_appUser)
         {
             pageService = p_pageService;

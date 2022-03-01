@@ -3,11 +3,6 @@ using HomeWork_22_2_WPFClient.Interfaces;
 using HomeWork_22_2_WPFClient.Models;
 using HomeWork_22_2_WPFClient.Pages;
 using HomeWork_22_2_WPFClient.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace HomeWork_22_2_WPFClient.ViewModel

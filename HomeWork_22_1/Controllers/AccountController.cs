@@ -35,7 +35,7 @@ namespace HomeWork_22.Controllers {
             ViewBag.Name = HttpContext.User.Identity.Name;
             if (ModelState.IsValid)
             {
-                AppUser user = await userManager.FindByEmailAsync(details.Email);
+                AppUser user = await userManager.FindByNameAsync(details.Name);
                 if (user != null)
                 {
                     await signInManager.SignOutAsync();
@@ -47,7 +47,7 @@ namespace HomeWork_22.Controllers {
                         return Redirect(returnUrl ?? "/");
                     }
                 }
-                ModelState.AddModelError(nameof(LoginModel.Email),
+                ModelState.AddModelError(nameof(LoginModel.Name),
                     "Invalid user or password");
             }
             return View(details);

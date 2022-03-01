@@ -142,22 +142,6 @@ namespace HomeWork_22_2_WPFClient.ViewModel
                 });
                 return a;
             }
-        }
-
-        /// <summary>
-        /// Панель админа
-        /// </summary>
-        public ICommand ButtonAdminClickCommand
-        {
-            get
-            {
-                var a = new DelegateCommand(async () =>
-                {
-                    //await messageBus.SendTo<PageViewRecordViewModel>(new ReturnPageMessage(new Page1AndLoginUser()));
-                    //pageService.ChangePage(new PageAdmin());
-                });
-                return a;
-            }
-        }
+        }        
     }
 }

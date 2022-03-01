@@ -19,8 +19,6 @@ namespace HomeWork_22_2_WPFClient.ViewModel
         public MainViewModel(PageService pageService)
         {
             _pageService = pageService;
-
-
             _pageService.OnPageChanged += (page) => PageSource = page;
             _pageService.ChangePage(new Page1());
         }
