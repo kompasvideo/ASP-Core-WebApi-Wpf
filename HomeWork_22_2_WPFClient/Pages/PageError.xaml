@@ -14,6 +14,6 @@
     </Page.Resources>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="Ошибка"/>
-        <Button Content="Ok" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageError}}"/>
+        <Button Content="OK" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageError}}" Margin="10,15,10,0"/>
     </StackPanel>
 </Page>

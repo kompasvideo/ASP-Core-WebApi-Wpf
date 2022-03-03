@@ -15,13 +15,13 @@
     </Page.Resources>
     <DockPanel>
         <Button Content="Вернуться назад" Command="{Binding ButtonReturnClickCommand, Source={StaticResource page}}" HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top"/>
-        <Border BorderBrush="White">
+        <GroupBox Header="Редактировать роль" Width="290">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  DataContext="{Binding myIdentityRole}">
-                <TextBlock Text="Редактировать роль" HorizontalAlignment="Center" Background="Blue" Foreground="White" Width="200"/>
-                <TextBlock Text="Имя роли:" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding Name}" IsReadOnly="True"/>
-                <TextBlock Text="Добавить пользователей к роли 'Users'" Margin="0,10,0,0"/>
-                <ListView DataContext="{StaticResource page}" ItemsSource="{Binding AddUsers}" x:Name="lvItems" IsSynchronizedWithCurrentItem="True">
+                <TextBlock Text="Имя роли:" Margin="10,10,10,0"/>
+                <TextBox Text="{Binding Name}" IsReadOnly="True" Margin="10,0,10,0"/>
+                <TextBlock Text="Добавить пользователей к роли 'Users'" Margin="10,10,10,0"/>
+                <ListView DataContext="{StaticResource page}" ItemsSource="{Binding AddUsers}" x:Name="lvItems" 
+                          IsSynchronizedWithCurrentItem="True"  Margin="10,0,10,0">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Имя" Width="130">
@@ -56,8 +56,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <TextBlock Text="Удалить пользователей из роли 'Users'" Margin="0,10,0,0"/>
-                <ListView DataContext="{StaticResource page}" ItemsSource="{Binding DelUsers}" x:Name="lvItems2" IsSynchronizedWithCurrentItem="True">
+                <TextBlock Text="Удалить пользователей из роли 'Users'" Margin="10,10,10,0"/>
+                <ListView DataContext="{StaticResource page}" ItemsSource="{Binding DelUsers}" Margin="10,0,10,0"
+                          x:Name="lvItems2" IsSynchronizedWithCurrentItem="True">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Имя" Width="130">
@@ -92,9 +93,10 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Content="Редактировать роль" Command="{Binding ButtonEditRoleClickCommand, Source={StaticResource page}}"/>
+                <Button Content="Редактировать роль"  Margin="40,20,40,20"
+                        Command="{Binding ButtonEditRoleClickCommand, Source={StaticResource page}}"/>
             </StackPanel>
-        </Border>
+        </GroupBox>
     </DockPanel>
 </Page>
 
