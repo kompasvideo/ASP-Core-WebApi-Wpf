@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_2_WebApi", "Hom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_2_WebClient", "HomeWork_22_2_WebClient\HomeWork_22_2_WebClient.csproj", "{02BCAD69-9F4F-4F07-B31F-4DE1009D326A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork_22_2_WPFClient", "HomeWork_22_2_WPFClient\HomeWork_22_2_WPFClient.csproj", "{D46DBE60-B664-4E15-AA4C-2AC63331A36B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_22_2_WPFClient", "HomeWork_22_2_WPFClient\HomeWork_22_2_WPFClient.csproj", "{D46DBE60-B664-4E15-AA4C-2AC63331A36B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
