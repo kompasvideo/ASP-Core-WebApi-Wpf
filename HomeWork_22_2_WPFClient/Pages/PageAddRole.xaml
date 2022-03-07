@@ -11,14 +11,15 @@
     <Page.Resources>
         <viewmodel:PageAddRoleViewModel x:Key="pageAddRole"/>
     </Page.Resources>
-    <DockPanel>
-        <Button Content="Вернуться назад" Command="{Binding ButtonReturnClickCommand, Source={StaticResource pageAddRole}}" HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top"/>
-        <GroupBox Header="Добавить роль" Width="230" Height="120">
+    <DockPanel Background="#FF1F1E1B" Cursor="Hand">
+        <Button Content="Вернуться назад" Command="{Binding ButtonReturnClickCommand, Source={StaticResource pageAddRole}}" 
+                HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top" Foreground="{StaticResource bTextColor}"/>
+        <GroupBox Header="Добавить роль" Width="230" Height="160">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Имя:" Margin="10,10,10,0"/>
-                <TextBox Text="{Binding UserName,Source={StaticResource pageAddRole}}" Width="200"/>
-                <Button Content="Добавить роль" Margin="50,20,50,20"
-                        Command="{Binding ButtonAddRoleClickCommand, Source={StaticResource pageAddRole}}"/>
+                <TextBlock Text="Имя:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+                <TextBox Text="{Binding UserName,Source={StaticResource pageAddRole}}" Width="200" Foreground="{StaticResource tbTextColor}" Cursor="IBeam"/>
+                <Button Content="Добавить роль" Margin="30,20,30,20" Foreground="{StaticResource bTextColor}"
+                        Command="{Binding ButtonAddRoleClickCommand, Source={StaticResource pageAddRole}}" Width="139"/>
             </StackPanel>
         </GroupBox>
     </DockPanel>

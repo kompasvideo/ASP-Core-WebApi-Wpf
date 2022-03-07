@@ -12,24 +12,26 @@
     <Page.Resources>
         <viewmodel:PageAdminViewModel x:Key="page"/>
     </Page.Resources>
-    <DockPanel >
+    <DockPanel Background="#FF1F1E1B">
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <WrapPanel Grid.Column="0" HorizontalAlignment="Left">
-                <Button Content="Записная книжка" Width="100" Command="{Binding ButtonPhoneRecordClickCommand}" Margin="5,0,0,0"/>
-                <Button Content="Пользователи" Width="90" IsEnabled="False" Margin="5,0,0,0"/>
-                <Button Content="Роли" Width="35" Command="{Binding ButtonRolesClickCommand}" Margin="5,0,0,0"/>
+                <Button Content="Записная книжка" Width="150" Command="{Binding ButtonPhoneRecordClickCommand}"
+                         Foreground="{StaticResource bTextColor}"/>
+                <Button Content="Пользователи" Width="130" IsEnabled="False" Foreground="{StaticResource bTextColor}"/>
+                <Button Content="Роли" Width="65" Command="{Binding ButtonRolesClickCommand}" Foreground="{StaticResource bTextColor}"/>
             </WrapPanel>
             <WrapPanel Grid.Column="1" HorizontalAlignment="Right">
-                <TextBlock Text="{Binding UserName, StringFormat={}Пользователь: {0}}" Margin="0,0,5,0" HorizontalAlignment="Right"/>
-                <Button Content="Выйти" Width="60" Command="{Binding Logout}" Margin="0,0,0,0"/>
+                <TextBlock Text="{Binding UserName, StringFormat={}Пользователь: {0}}" Margin="0,0,5,0" HorizontalAlignment="Right"
+                            Foreground="{StaticResource tbTextColor}" VerticalAlignment="Center"/>
+                <Button Content="Выйти" Width="81" Command="{Binding Logout}" Foreground="{StaticResource bTextColor}"/>
             </WrapPanel>
         </Grid>
         <StackPanel DockPanel.Dock="Left" Width="100">
-            <Button Content="Создать" Width="60" Command="{Binding AddUser}"></Button>
+            <Button Content="Создать" Width="90" Command="{Binding AddUser}" Foreground="{StaticResource bTextColor}"/>
         </StackPanel>
         <ListView ItemsSource="{Binding Users}" x:Name="lvItems" IsSynchronizedWithCurrentItem="True">
             <ListView.GroupStyle>
@@ -46,7 +48,7 @@
                     <GridViewColumn Header="Id">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="but" Text="{Binding Id}" Margin="5,0" Width="220"/>
+                                <TextBlock x:Name="but" Text="{Binding Id}" Margin="5,0" Width="250"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -67,10 +69,10 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="bEdit" Height="20" Width="90">
+                                <Button x:Name="bEdit" Height="27" Width="130" Foreground="{StaticResource bTextColor}">
                                     <Button.Content>
                                         <StackPanel>
-                                            <Label Content="Редактировать" Height="20" Margin="0" Padding="0"/>
+                                            <Label Content="Редактировать" Height="27" Margin="0" Padding="0"/>
                                             <TextBlock x:Name="tb" Text="{Binding Id}"/>
                                         </StackPanel>
                                     </Button.Content>
@@ -88,10 +90,10 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="bDel" Height="20" Width="50">
+                                <Button x:Name="bDel" Height="27" Width="85" Foreground="{StaticResource bTextColor}">
                                     <Button.Content>
                                         <StackPanel>
-                                            <Label Content="Удалить" Height="20" Margin="0" Padding="0"/>
+                                            <Label Content="Удалить" Height="27" Margin="0" Padding="0"/>
                                             <TextBlock x:Name="tb" Text="{Binding Id}">
                                             </TextBlock>
                                         </StackPanel>

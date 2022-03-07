@@ -12,18 +12,21 @@
     <Page.Resources>
         <viewmodel:Page1AndLoginUserViewModel x:Key="page1"/>
     </Page.Resources>
-    <DockPanel>
+    <DockPanel Background="#FF1F1E1B" Cursor="Hand">
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="Панель администратора" Width="150" Command="{Binding ButtonAdminClickCommand}" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0"/>
-            <TextBlock Text="{Binding UserName, StringFormat={}Пользователь: {0}}" Margin="0,0,65,0" HorizontalAlignment="Right" Grid.Column="1"/>
-            <Button Content="Выйти" Width="60" Command="{Binding Logout}" Margin="0,0,0,0" HorizontalAlignment="Right" Grid.Column="1"/>
+            <Button Content="Панель администратора" Width="197" Command="{Binding ButtonAdminClickCommand}" 
+                    HorizontalAlignment="Left" Grid.Column="0" Foreground="{StaticResource bTextColor}"/>
+            <TextBlock Text="{Binding UserName, StringFormat={}Пользователь: {0}}" Margin="0,0,80,0" HorizontalAlignment="Right" 
+                       Grid.Column="1" Foreground="{StaticResource tbTextColor}" VerticalAlignment="Center"/>
+            <Button Content="Выйти" Width="73" Command="{Binding Logout}" Margin="0,0,0,0" HorizontalAlignment="Right" 
+                    Grid.Column="1" Cursor="Hand" Foreground="{StaticResource bTextColor}"/>
         </Grid>
         <StackPanel DockPanel.Dock="Left" Width="100">
-            <Button Content="Создать" Width="60" Command="{Binding AddRecord}"></Button>
+            <Button Content="Создать" Width="86" Command="{Binding AddRecord}" Foreground="{StaticResource bTextColor}"></Button>
         </StackPanel>
         <ListView ItemsSource="{Binding PhoneBooks}" x:Name="lvItems" IsSynchronizedWithCurrentItem="True">
             <ListView.GroupStyle>
@@ -40,7 +43,8 @@
                     <GridViewColumn Header="№">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="but" Content="{Binding PhoneBookID}" Margin="5,0" Width="20">
+                                <Button x:Name="but" Content="{Binding PhoneBookID}" Margin="5,0" Width="50" Height="27"
+                                         Foreground="{StaticResource bTextColor}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction
@@ -55,31 +59,31 @@
                     <GridViewColumn Header="Фамилия">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding LastName }"/>
+                                <TextBlock Text="{Binding LastName }" Height="27" VerticalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Имя">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding FirstName}"/>
+                                <TextBlock Text="{Binding FirstName}" Height="27" VerticalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Отчество">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding ThreeName}"/>
+                                <TextBlock Text="{Binding ThreeName}" Height="27" VerticalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="bEdit" Height="20">
+                                <Button x:Name="bEdit" Height="27" Foreground="{StaticResource bTextColor}">
                                     <Button.Content>
                                         <StackPanel>
-                                            <Label Content="Редактировать" Height="20" Margin="0" Padding="0"/>
+                                            <Label Content="Редактировать" Height="27" Margin="0" Padding="0"/>
                                             <TextBlock x:Name="tb" Text="{Binding PhoneBookID}"/>
                                         </StackPanel>
                                     </Button.Content>
@@ -97,10 +101,10 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="bDel" Height="20">
+                                <Button x:Name="bDel" Height="27" Foreground="{StaticResource bTextColor}">
                                     <Button.Content>
                                         <StackPanel>
-                                            <Label Content="Удалить" Height="20" Margin="0" Padding="0"/>
+                                            <Label Content="Удалить" Height="27" Margin="0" Padding="0"/>
                                             <TextBlock x:Name="tb" Text="{Binding PhoneBookID}">
                                             </TextBlock>
                                         </StackPanel>

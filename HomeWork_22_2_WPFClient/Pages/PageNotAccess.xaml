@@ -8,12 +8,12 @@
       xmlns:viewmodel="clr-namespace:HomeWork_22_2_WPFClient.ViewModel"
       DataContext="{Binding pageNotAccess, Source={StaticResource ViewModelLocator}}"
       Title="PageError">
-
     <Page.Resources>
         <viewmodel:PageNotAccessViewModel x:Key="pageNotAccess"/>
     </Page.Resources>
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Нет доступа"/>
-        <Button Content="OK" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageNotAccess}}" Margin="15,15,15,0"/>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF1F1E1B">
+        <TextBlock Text="Нет доступа" Foreground="{StaticResource tbTextColor}" HorizontalAlignment="Center"/>
+        <Button Content="OK" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageNotAccess}}" Margin="15,15,15,0"
+                 Foreground="{StaticResource bTextColor}" Cursor="Hand"/>
     </StackPanel>
 </Page>

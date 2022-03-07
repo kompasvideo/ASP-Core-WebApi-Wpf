@@ -11,23 +11,30 @@
     <Page.Resources>
         <viewmodel:PageAddRecordViewModel x:Key="pageAddRecord"/>
     </Page.Resources>
-    <DockPanel>
-        <Button Content="Вернуться назад" Command="{Binding ButtonReturnClickCommand, Source={StaticResource pageAddRecord}}" HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top"/>
-        <GroupBox Header="Добавить запись" Width="230" Height="340">
+    <DockPanel Background="#FF1F1E1B" Cursor="Hand">
+        <Button Content="Вернуться назад" Command="{Binding ButtonReturnClickCommand, Source={StaticResource pageAddRecord}}" 
+                HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top" Foreground="{StaticResource bTextColor}"/>
+        <GroupBox Header="Добавить запись" Width="230" Height="420" Foreground="{StaticResource tbTextColor}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Фамилия:" Margin="10,10,10,0"/>
-                <TextBox Text="{Binding LastName,Source={StaticResource pageAddRecord}}" Width="200" Margin="10,0,10,0"/>
-                <TextBlock Text="Имя:" Margin="10,10,10,0"/>
-            <TextBox Text="{Binding FirstName,Source={StaticResource pageAddRecord}}"  Width="200"/>
-                <TextBlock Text="Отчество:" Margin="10,10,10,0"/>
-            <TextBox Text="{Binding ThreeName,Source={StaticResource pageAddRecord}}"  Width="200"/>
-                <TextBlock Text="Номер телефона:" Margin="10,10,10,0"/>
-            <TextBox Text="{Binding NumberPhone,Source={StaticResource pageAddRecord}}"  Width="200"/>
-                <TextBlock Text="Адрес:" Margin="10,10,10,0"/>
-            <TextBox Text="{Binding Address,Source={StaticResource pageAddRecord}}"  Width="200"/>
-                <TextBlock Text="Должность:" Margin="10,10,10,0"/>
-            <TextBox Text="{Binding Description,Source={StaticResource pageAddRecord}}"  Width="200"/>
-                <Button Content="Добавить запись" Margin="50,20,50,20"
+                <TextBlock Text="Фамилия:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+                <TextBox Text="{Binding LastName,Source={StaticResource pageAddRecord}}" Width="200" Margin="10,0,10,0"
+                          Foreground="{StaticResource tbTextColor}"/>
+                <TextBlock Text="Имя:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+                <TextBox Text="{Binding FirstName,Source={StaticResource pageAddRecord}}"  Width="200" 
+                         Foreground="{StaticResource bTextColor}"/>
+                <TextBlock Text="Отчество:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+            <TextBox Text="{Binding ThreeName,Source={StaticResource pageAddRecord}}"  Width="200"
+                      Foreground="{StaticResource tbTextColor}"/>
+                <TextBlock Text="Номер телефона:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+            <TextBox Text="{Binding NumberPhone,Source={StaticResource pageAddRecord}}"  Width="200"
+                      Foreground="{StaticResource tbTextColor}"/>
+                <TextBlock Text="Адрес:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+            <TextBox Text="{Binding Address,Source={StaticResource pageAddRecord}}"  Width="200"
+                      Foreground="{StaticResource tbTextColor}"/>
+                <TextBlock Text="Должность:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+            <TextBox Text="{Binding Description,Source={StaticResource pageAddRecord}}"  Width="200"
+                      Foreground="{StaticResource tbTextColor}"/>
+                <Button Content="Добавить запись" Margin="30,20,30,20" Foreground="{StaticResource bTextColor}"
                     Command="{Binding ButtonAddRecordClickCommand, Source={StaticResource pageAddRecord}}"/>
         </StackPanel>
         </GroupBox>

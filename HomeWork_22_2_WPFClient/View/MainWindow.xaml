@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:HomeWork_22_2_WPFClient.Views"
         mc:Ignorable="d"
         DataContext="{Binding mainViewModel, Source={StaticResource ViewModelLocator}}"
-        Title="Записная книжка" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Записная книжка" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF1F1E1B">
         <Frame Content="{Binding PageSource}" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

@@ -12,13 +12,14 @@
     <Page.Resources>
         <viewmodel:Page1ViewModel x:Key="kpage1"/>
     </Page.Resources>
-    
-    <DockPanel>
+
+    <DockPanel Background="#FF1F1E1B">
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Right">
-            <Button Content="Войти" Width="60" Command="{Binding Login}" Margin="0,0,0,0"></Button>
+            <Button Content="Войти" Width="74" Command="{Binding Login}" Cursor="Hand" Height="27" Foreground="{StaticResource bTextColor}">
+            </Button>
         </WrapPanel>
         <StackPanel DockPanel.Dock="Left" Width="100">
-            <Button Content="Создать" Width="60" Command="{Binding AddRecord}"></Button>
+            <Button Content="Создать" Width="86" Command="{Binding AddRecord}" Height="27" Foreground="{StaticResource bTextColor}" Cursor="Hand"/>
         </StackPanel>
         <ListView ItemsSource="{Binding PhoneBooks}" x:Name="lvItems" IsSynchronizedWithCurrentItem="True">
             <ListView.GroupStyle>
@@ -35,46 +36,47 @@
                     <GridViewColumn Header="№">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                    <Button x:Name="but" Content="{Binding PhoneBookID}" Margin="5,0" Width="20">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction
+                                <Button x:Name="but" Content="{Binding PhoneBookID}" Margin="5,0" Width="50" Height="27" 
+                                        Foreground="{StaticResource bTextColor}" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction
                                                 Command="{Binding Source={StaticResource kpage1}, Path=ButtonClickCommand, UpdateSourceTrigger=PropertyChanged}"
                                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Content}" />
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </Button>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Фамилия">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                    <TextBlock Text="{Binding LastName }"/>
+                                <TextBlock Text="{Binding LastName }" Height="27" VerticalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Имя">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                    <TextBlock Text="{Binding FirstName}"/>
+                                <TextBlock Text="{Binding FirstName}" Height="27" VerticalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Отчество">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                 <TextBlock Text="{Binding ThreeName}"/>
+                                <TextBlock Text="{Binding ThreeName}" Height="27" VerticalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="bEdit" Height="20">
+                                <Button x:Name="bEdit" Height="27" Foreground="{StaticResource bTextColor}">
                                     <Button.Content>
                                         <StackPanel>
-                                            <Label Content="Редактировать" Height="20" Margin="0" Padding="0"/>
+                                            <Label Content="Редактировать" Height="27" Margin="0" Padding="0"/>
                                             <TextBlock x:Name="tb" Text="{Binding PhoneBookID}"/>
                                         </StackPanel>
                                     </Button.Content>
@@ -92,10 +94,10 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="bDel" Height="20">
+                                <Button x:Name="bDel" Height="27" Foreground="{StaticResource bTextColor}">
                                     <Button.Content>
                                         <StackPanel>
-                                            <Label Content="Удалить" Height="20" Margin="0" Padding="0"/>
+                                            <Label Content="Удалить" Height="27" Margin="0" Padding="0"/>
                                             <TextBlock x:Name="tb" Text="{Binding PhoneBookID}">
                                             </TextBlock>
                                         </StackPanel>

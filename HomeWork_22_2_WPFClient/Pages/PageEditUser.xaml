@@ -12,18 +12,19 @@
     <Page.Resources>
         <viewmodel:PageEditUserViewModel x:Key="page"/>
     </Page.Resources>
-    <DockPanel>
-        <Button Content="Вернуться назад" Command="{Binding ButtonReturnClickCommand, Source={StaticResource page}}" HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top"/>
-        <GroupBox Header="Редактировать пользователя" Width="230" Height="210">
+    <DockPanel Background="#FF1F1E1B">
+        <Button Content="Вернуться назад" Command="{Binding ButtonReturnClickCommand, Source={StaticResource page}}" 
+                HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top" Foreground="{StaticResource bTextColor}"/>
+        <GroupBox Header="Редактировать пользователя" Width="280" Height="260">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  DataContext="{Binding appUser}">
-                <TextBlock Text="Id:" Margin="10,10,10,0"/>
-                <TextBox Text="{Binding Id}" IsEnabled="False" Width="200"/>
-                <TextBlock Text="Имя:" Margin="10,10,10,0"/>
-                <TextBox Text="{Binding UserName}" Width="200"/>
-                <TextBlock Text="Почта:" Margin="10,10,10,0"/>
-                <TextBox Text="{Binding Email}"  Width="200"/>
-                <Button Content="Редактировать пользователя" Margin="10,20,10,20"
-                        Command="{Binding ButtonEditUserClickCommand, Source={StaticResource page}}"/>
+                <TextBlock Text="Id:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+                <TextBox Text="{Binding Id}" IsEnabled="False" Width="250" Foreground="{StaticResource tbTextColor}"/>
+                <TextBlock Text="Имя:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+                <TextBox Text="{Binding UserName}" Width="250" Foreground="{StaticResource tbTextColor}"/>
+                <TextBlock Text="Почта:" Margin="10,10,10,0" Foreground="{StaticResource tbTextColor}"/>
+                <TextBox Text="{Binding Email}"  Width="250" Foreground="{StaticResource tbTextColor}"/>
+                <Button Content="Редактировать пользователя" Margin="15,20,15,20" Foreground="{StaticResource bTextColor}"
+                        Command="{Binding ButtonEditUserClickCommand, Source={StaticResource page}}" Cursor="Hand"/>
             </StackPanel>
         </GroupBox>
     </DockPanel>

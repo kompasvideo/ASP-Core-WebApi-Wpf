@@ -12,8 +12,9 @@
     <Page.Resources>
         <viewmodel:PageErrorViewModel x:Key="pageError"/>
     </Page.Resources>
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Ошибка"/>
-        <Button Content="OK" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageError}}" Margin="10,15,10,0"/>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Background="#FF1F1E1B" Cursor="Hand">
+        <TextBlock Text="Ошибка" Foreground="{StaticResource tbTextColor}" HorizontalAlignment="Center"/>
+        <Button Content="OK" Command="{Binding ButtonOkClickCommand, Source={StaticResource pageError}}" Margin="10,15,10,0"
+                 Foreground="{StaticResource bTextColor}"/>
     </StackPanel>
 </Page>

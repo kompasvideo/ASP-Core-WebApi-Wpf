@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using ShowMeTheXAML;
 
-namespace HomeWork_22_2_WPFClient
+namespace WpfCore
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -16,7 +16,6 @@ namespace HomeWork_22_2_WPFClient
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            ViewModelLocator.Init();
             //This is an alternate way to initialize MaterialDesignInXAML if you don't use the MaterialDesignResourceDictionary in App.xaml
             //Color primaryColor = SwatchHelper.Lookup[MaterialDesignColor.DeepPurple];
             //Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
