@@ -1,4 +1,5 @@
 ﻿using HomeWork_22_2_WPFClient.Interfaces;
+using HomeWork_22_2_WPFClient.Model;
 using HomeWork_22_2_WPFClient.Models;
 using Newtonsoft.Json;
 using System;
@@ -23,11 +24,34 @@ namespace HomeWork_22_2_WPFClient.Data
 
         public IEnumerable<PhoneBook> GetPhoneBook()
         {
-            string url = @"https://localhost:5001/PhoneBook";
+            try
+            {
+                string url = @"https://localhost:5001/PhoneBook";
 
-            string json = httpClient.GetStringAsync(url).Result;
+                string json = httpClient.GetStringAsync(url).Result;
 
-            phoneBooks = JsonConvert.DeserializeObject<IEnumerable<PhoneBook>>(json);
+                phoneBooks = JsonConvert.DeserializeObject<IEnumerable<PhoneBook>>(json);
+            }
+            catch (InvalidOperationException)
+            {
+                phoneBooks = new List<PhoneBook>();
+                Error.NameExeption = "InvalidOperationException";
+            }
+            catch (HttpRequestException)
+            {
+                phoneBooks = new List<PhoneBook>();
+                Error.NameExeption = "HttpRequestException";
+            }
+            catch (TaskCanceledException)
+            {
+                phoneBooks = new List<PhoneBook>();
+                Error.NameExeption = "TaskCanceledException";
+            }
+            catch (Exception)
+            {
+                phoneBooks = new List<PhoneBook>();
+                Error.NameExeption = "Exception";
+            }
             return phoneBooks;
         }
 

@@ -14,6 +14,8 @@ using HomeWork_22_2_WPFClient.Services;
 using HomeWork_22_2_WPFClient.Pages;
 using HomeWork_22_2_WPFClient.Messages;
 using System.Windows.Controls;
+using HomeWork_22_2_WPFClient.Model;
+using System.Windows;
 
 namespace HomeWork_22_2_WPFClient.ViewModel
 {
